@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="kotlin-todo-app-1.0-SNAPSHOT">
+    <output-path>C:\Users\mramp\Desktop\kotlin-todo-app\build\libs</output-path>
+    <root id="archive" name="kotlin-todo-app-1.0-SNAPSHOT.jar">
+      <element id="module-output" name="kotlin-todo-app.main" />
+    </root>
+  </artifact>
+</component>

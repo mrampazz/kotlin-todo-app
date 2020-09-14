@@ -1,0 +1,52 @@
+plugins {
+    id("org.jetbrains.kotlin.js") version "1.4.10"
+}
+
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+    maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
+    maven("https://kotlin.bintray.com/kotlin-js-wrappers/")
+    jcenter()
+}
+
+dependencies {
+    implementation(kotlin("stdlib-js"))
+
+    // React + React-dom
+    implementation("org.jetbrains:kotlin-react:16.13.1-pre.110-kotlin-1.4.0")
+    implementation("org.jetbrains:kotlin-react-dom:16.13.1-pre.110-kotlin-1.4.0")
+    implementation(npm("react", "16.13.1"))
+    implementation(npm("react-dom", "16.13.1"))
+    implementation("org.jetbrains:kotlin-react-redux:5.0.7-pre.114-kotlin-1.4.0")
+    implementation("org.jetbrains:kotlin-redux:4.0.0-pre.114-kotlin-1.4.0")
+
+    //Kotlin Styled
+    implementation("org.jetbrains:kotlin-styled:1.0.0-pre.110-kotlin-1.4.0")
+    implementation(npm("styled-components", "~5.1.1"))
+    implementation(npm("inline-style-prefixer", "~6.0.0"))
+}
+
+kotlin {
+    js {
+        browser {
+            webpackTask {
+                cssSupport.enabled = true
+            }
+
+            runTask {
+                cssSupport.enabled = true
+            }
+
+            testTask {
+                useKarma {
+                    useChromeHeadless()
+                    webpackConfig.cssSupport.enabled = true
+                }
+            }
+        }
+        binaries.executable()
+    }
+}
